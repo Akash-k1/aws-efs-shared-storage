@@ -120,19 +120,15 @@ The project involved checking that:
 
 ![EC2 Instance 3 — EFS Connection](screenshots/efs-server3.png)
 
-### 4. EFS Mount and Configuration Evidence
 
 ![EFS Configuration Evidence](screenshots/Screenshot%202026-10-10%20191112.png)
 
-### 5. Shared Storage Verification
 
 ![Shared Storage Verification](screenshots/Screenshot%202026-10-10%20191751.png)
 
-### 6. Shared Storage Testing
 
 ![Shared Storage Testing](screenshots/Screenshot%202026-10-10%20191905.png)
 
-### 7. Additional Verification
 
 ![Additional EFS Verification](screenshots/Screenshot%202026-10-10%20192816.png)
 
