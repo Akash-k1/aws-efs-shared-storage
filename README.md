@@ -41,22 +41,6 @@ Three EC2 instances connect to the same Amazon EFS file system through their net
 
 Each instance mounts the shared file system, allowing files stored in EFS to be accessed from all three instances, subject to network and file permissions.
 
-## 📸 Project Screenshots
-
-### 1. EC2 Instance 1 — EFS Connection
-![EFS Server 1](efs-server1.png)
-
-### 2. EC2 Instance 2 — EFS Connection
-![EFS Server 2](efs-server2.png)
-
-### 3. EC2 Instance 3 — EFS Connection
-![EFS Server 3](efs-server3.png)
-
-### 4. Shared Storage Verification
-The following screenshots demonstrate file visibility across the three EC2 instances using the shared EFS mount.
-
-![EFS shared storage verification](Screenshot%202026-10-10%20192816.png)
-
 ## ⚙️ Implementation Steps
 
 ### 1. Create the EFS File System
@@ -122,6 +106,35 @@ The project involved checking that:
 - Understanding how multiple EC2 instances can access a common filesystem.
 - Practicing Linux directory and file-management commands.
 - Understanding the importance of VPC connectivity and security group configuration for EFS access.
+## 📸 Project Screenshots
+
+### 1. EC2 Instance 1 — EFS Connection
+
+![EC2 Instance 1 — EFS Connection](screenshots/efs-server1.png)
+
+### 2. EC2 Instance 2 — EFS Connection
+
+![EC2 Instance 2 — EFS Connection](screenshots/efs-server2.png)
+
+### 3. EC2 Instance 3 — EFS Connection
+
+![EC2 Instance 3 — EFS Connection](screenshots/efs-server3.png)
+
+### 4. EFS Mount and Configuration Evidence
+
+![EFS Configuration Evidence](screenshots/Screenshot%202026-10-10%20191112.png)
+
+### 5. Shared Storage Verification
+
+![Shared Storage Verification](screenshots/Screenshot%202026-10-10%20191751.png)
+
+### 6. Shared Storage Testing
+
+![Shared Storage Testing](screenshots/Screenshot%202026-10-10%20191905.png)
+
+### 7. Additional Verification
+
+![Additional EFS Verification](screenshots/Screenshot%202026-10-10%20192816.png)
 
 ## 💰 Cost Management and Cleanup
 
