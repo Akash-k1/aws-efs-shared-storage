@@ -1,82 +1,127 @@
 # AWS EFS Shared Storage Across Three EC2 Instances
 
-## Project Overview
+**Hands-on AWS Cloud Project | Linux | Network File System (NFS)**
 
-This project demonstrates mounting Amazon Elastic File System (EFS) on three Amazon EC2 instances using Linux commands and verifying shared file access across the servers.
+## 📌 Project Overview
 
-## Objectives
+This project demonstrates how to configure Amazon Elastic File System (EFS) as shared storage across three Amazon EC2 instances.
 
-- Configure and access Amazon EFS from multiple EC2 instances.
-- Mount a shared filesystem using NFSv4.1.
-- Create and access files through the shared filesystem.
-- Understand shared storage in an AWS environment.
+Using Linux commands and NFSv4.1, I mounted the same EFS file system on three EC2 instances and verified that files created on the shared storage could be accessed from the other instances.
 
-## AWS Services and Technologies
+## 🎯 Project Objectives
 
-- Amazon EC2
-- Amazon EFS
-- Amazon VPC (default VPC)
-- Amazon Linux
-- Linux command line
-- NFSv4.1
+- Create and configure an Amazon EFS file system.
+- Connect EFS to three EC2 instances within the same VPC.
+- Mount the shared file system using Linux commands.
+- Verify shared file access across multiple EC2 instances.
+- Understand how network file storage supports shared access between servers.
 
-## Architecture
+## 🛠️ AWS Services and Technologies
 
-Three EC2 instances connect to the same EFS filesystem through an EFS mount target within the VPC.
+| Service / Technology | Purpose |
+|---|---|
+| Amazon EC2 | Hosts the three Linux instances |
+| Amazon EFS | Provides shared, elastic file storage |
+| Amazon VPC | Provides the network environment |
+| Amazon Linux | Operating system used on the EC2 instances |
+| NFSv4.1 | Protocol used to mount and access EFS |
+| Linux CLI | Used for mounting and file-management operations |
 
-**Flow:**
+## 🏗️ Architecture
 
-EC2 Instance 1 ─┐  
-EC2 Instance 2 ─┼── Amazon EFS  
-EC2 Instance 3 ─┘
+Three EC2 instances connect to the same Amazon EFS file system through their network interfaces and EFS mount targets.
 
-All three instances mount the same filesystem, allowing them to access shared files.
+**Architecture flow:**
 
-## Implementation Steps
+`EC2 Instance 1 ─┐`
 
-### 1. Create the EFS Filesystem
+`EC2 Instance 2 ─┼── Amazon EFS`
 
-- Created an Amazon EFS filesystem.
+`EC2 Instance 3 ─┘`
+
+Each instance mounts the shared file system, allowing files stored in EFS to be accessed from all three instances, subject to network and file permissions.
+
+## ⚙️ Implementation Steps
+
+### 1. Create the EFS File System
+
+- Created an Amazon EFS file system.
 - Used the default VPC for the lab.
-- Used the EFS mount target IP address to connect from the EC2 instances.
+- Identified the EFS mount target IP address for connectivity.
 
-### 2. Create Mount Directories
+### 2. Connect to the EC2 Instances
 
-On each EC2 instance, created a directory to use as the mount point.
+- Connected to three Amazon Linux EC2 instances.
+- Used the Linux terminal to perform the storage configuration.
+
+### 3. Mount EFS on the Instances
+
+Created a directory to use as the mount point:
 
 ```bash
 mkdir folder3
 ```
 
-### 3. Mount EFS Using NFS
-
-Mounted the EFS filesystem using a Linux NFS command.
+Mounted the EFS file system using NFSv4.1:
 
 ```bash
 sudo mount -t nfs4 -o nfsvers=4.1,rsize=1048576,wsize=1048576,hard,timeo=600,retrans=2,noresvport <EFS-MOUNT-TARGET-IP>:/ folder3
 ```
 
-Replace `<EFS-MOUNT-TARGET-IP>` with the actual EFS mount target IP address.
+Replace `<EFS-MOUNT-TARGET-IP>` with the appropriate mount target IP address.
+
+Repeated the mounting process on the other EC2 instances.
 
 ### 4. Verify Shared File Access
 
-Navigated to the mounted directory and listed its contents.
+Navigated to the mounted directory:
 
 ```bash
 cd folder3
-ls
 ```
 
-Created and accessed files on the shared filesystem and verified their visibility across the three EC2 instances.
+Listed the files:
 
-## Key Learnings
+```bash
+ls -la
+```
 
-- Amazon EFS shared filesystem concepts.
-- Mounting network filesystems on Linux.
-- NFSv4.1 and EFS mount target connectivity.
-- Shared file access across multiple EC2 instances.
-- Basic AWS networking and Linux administration.
+Created files on the shared filesystem and checked their availability from the other EC2 instances.
 
-## Cleanup
+**Result:** Verified that files stored on the shared EFS filesystem could be accessed across all three instances.
 
-Unmount the EFS filesystem from each instance when finished and delete the EFS filesystem and unused lab resources when they are no longer needed to avoid ongoing charges.
+## 🧪 Validation
+
+The project involved checking that:
+
+- EFS was mounted on all three EC2 instances.
+- Files created on the shared filesystem were visible from the other instances.
+- The same shared storage was accessible through each instance's mount point.
+
+## 📚 Key Learning Outcomes
+
+- Understanding Amazon EFS and shared network file storage.
+- Mounting an AWS-managed filesystem on Linux EC2 instances.
+- Working with NFSv4.1 mount options.
+- Understanding how multiple EC2 instances can access a common filesystem.
+- Practicing Linux directory and file-management commands.
+- Understanding the importance of VPC connectivity and security group configuration for EFS access.
+
+## 💰 Cost Management and Cleanup
+
+Amazon EFS storage and related AWS resources may incur charges.
+
+After completing the lab:
+
+- Unmount EFS from the EC2 instances if no longer needed.
+- Delete the EFS file system if it is no longer required.
+- Terminate unused EC2 instances.
+- Review remaining mount targets and other resources before finishing cleanup.
+
+## 👨‍💻 Author
+
+**Akash K**
+
+GitHub: [Akash-k1](https://github.com/Akash-k1)
+
+**Focus Areas:** AWS Cloud, Linux, Storage, Networking, and DevOps
