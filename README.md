@@ -41,6 +41,22 @@ Three EC2 instances connect to the same Amazon EFS file system through their net
 
 Each instance mounts the shared file system, allowing files stored in EFS to be accessed from all three instances, subject to network and file permissions.
 
+## 📸 Project Screenshots
+
+### 1. EC2 Instance 1 — EFS Connection
+![EFS Server 1](efs-server1.png)
+
+### 2. EC2 Instance 2 — EFS Connection
+![EFS Server 2](efs-server2.png)
+
+### 3. EC2 Instance 3 — EFS Connection
+![EFS Server 3](efs-server3.png)
+
+### 4. Shared Storage Verification
+The following screenshots demonstrate file visibility across the three EC2 instances using the shared EFS mount.
+
+![EFS shared storage verification](Screenshot%202026-10-10%20192816.png)
+
 ## ⚙️ Implementation Steps
 
 ### 1. Create the EFS File System
